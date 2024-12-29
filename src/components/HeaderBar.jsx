@@ -6,7 +6,7 @@ const HeaderBar = ({ handlePrintClick, handleSaveClick, handleInfoClick }) => {
     
     return (
         <div className='header'>
-            <h2>MotoMaps</h2>
+            <h2>lsMaps</h2>
             <div className="header-buttons">
                 <button onClick={handlePrintClick}>
                     <IoIosPrint />
