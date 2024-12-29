@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .json-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        .json-container ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .json-container li {
+            margin: 5px 0;
+        }
+
+        .json-key {
+            font-weight: bold;
+            color: #2a7ae2;
+        }
+
+        .json-value {
+            margin-left: 5px;
+            color: #555;
+        }
+
+        .json-array {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .json-object {
+            border-left: 2px solid #ddd;
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GeoApify API Test</h1>
+    <p>API link: https://apidocs.geoapify.com/docs/routing/</p>
+    <p>API call result:</p>
+    <div id="api-result" class="json-container"></div>
+
+    <script>
+        // Function to create HTML elements from JSON data
+        function createElementFromJSON(key, value) {
+            const li = document.createElement('li');
+
+            if (typeof value === 'object' && value !== null) {
+                // If the value is an object or array, create a nested list
+                const spanKey = document.createElement('span');
+                spanKey.textContent = key ? key + ': ' : '';
+                spanKey.className = 'json-key';
+                li.appendChild(spanKey);
+
+                const ul = document.createElement('ul');
+                ul.className = Array.isArray(value) ? 'json-array' : 'json-object';
+
+                if (Array.isArray(value)) {
+                    value.forEach((item, index) => {
+                        ul.appendChild(createElementFromJSON(index, item));
+                    });
+                } else {
+                    for (const [k, v] of Object.entries(value)) {
+                        ul.appendChild(createElementFromJSON(k, v));
+                    }
+                }
+
+                li.appendChild(ul);
+            } else {
+                // If the value is a primitive, display it directly
+                const spanKey = document.createElement('span');
+                spanKey.textContent = key ? key + ': ' : '';
+                spanKey.className = 'json-key';
+                li.appendChild(spanKey);
+
+                const spanValue = document.createElement('span');
+                spanValue.textContent = value;
+                spanValue.className = 'json-value';
+                li.appendChild(spanValue);
+            }
+
+            return li;
+        }
+
+        // Function to render JSON data into HTML
+        function renderJSON(data) {
+            const ul = document.createElement('ul');
+
+            if (data.type) {
+                ul.appendChild(createElementFromJSON('type', data.type));
+            }
+
+            if (data.properties) {
+                ul.appendChild(createElementFromJSON('properties', data.properties));
+            }
+
+            if (data.features) {
+                ul.appendChild(createElementFromJSON('features', data.features));
+            }
+
+            return ul;
+        }
+
+        // Fetch data from the GeoApify API
+        var requestOptions = {
+            method: 'GET',
+        };
+
+        fetch("https://api.geoapify.com/v1/routing?waypoints=38.6584624%2C-90.310485%7C38.627297%2C-90.342969&mode=scooter&apiKey=1f05d34fdcdc443a93731af1f6bb1c7f", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                const apiResultContainer = document.getElementById('api-result');
+                const jsonHTML = renderJSON(result);
+                apiResultContainer.appendChild(jsonHTML);
+            })
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>

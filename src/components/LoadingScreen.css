@@ -1,0 +1,36 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--loading-screen-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: black;
+    font-size: 1.5rem;
+    font-family: var(--heading-font);
+    transition: all 1s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-message {
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    font-family: var(--body-font);
+}
+
+.loading-screen.fade-in {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}

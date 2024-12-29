@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+:root {
+  --background-color: #f4f4f4;
+  --loading-screen-color: #f4f4f4ac;
+  --accent-color: blue;
+  --dark-accent-color: darkblue;
+  --highlight-color: #ff9800;
+  --border-radius: 3px;
+  --heading-font: 'Poppins', sans-serif;
+  --body-font: 'Nunito', sans-serif;
+  --input-font: 'Rubik', sans-serif;
+}
+
+.mapContainer {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  outline: none;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  font-family: var(--input-font);
+}
+
+button[type="submit"] {
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-family: var(--input-font);
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-family: var(--input-font);
+}
+
+p {
+  color: black;
+  font-weight: bold;
+  font-family: var(--body-font);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 20em;
+  height: 8px;
+  background: #ddd;
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--dark-accent-color);
+}
+
+
+.horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.horizontal-input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.horizontal button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.horizontal button:hover {
+  color: var(--accent-color);
+  transition: all 0.3s;
+}
