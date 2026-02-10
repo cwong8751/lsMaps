@@ -33,6 +33,30 @@ const Sidebar = ({
     return (
         <>
             <div className={`sidebar ${showSidebar ? "visible" : "hidden"}`}>
+
+                <div className='route-option-sidebar'>
+                    <ul className='vehicle-type-select-menu'>
+                        <li
+                            onClick={() => handleVehicleTypeSelect('bicycle')}
+                            className={selectedVehicle === 'bicycle' ? 'selected' : ''}
+                        >
+                            <FaBicycle size={"2em"} />
+                        </li>
+                        <li
+                            onClick={() => handleVehicleTypeSelect('scooter')}
+                            className={selectedVehicle === 'scooter' ? 'selected' : ''}
+                        >
+                            <MdMoped size={"2em"} />
+                        </li>
+                        <li
+                            onClick={() => handleVehicleTypeSelect('motorcycle')}
+                            className={selectedVehicle === 'motorcycle' ? 'selected' : ''}
+                        >
+                            <FaMotorcycle size={"2em"} />
+                        </li>
+                    </ul>
+                </div>
+
                 <form>
                     {/* CITATION: https://www.npmjs.com/package/@geoapify/react-geocoder-autocomplete */}
                     <GeoapifyContext apiKey="1f05d34fdcdc443a93731af1f6bb1c7f">
@@ -80,55 +104,21 @@ const Sidebar = ({
                 </form>
 
                 <div className='route-option-sidebar'>
-                    <div className='sidebar-subtitle-container'>
-                        <p className='sidebar-title-text'>Route Options</p>
-                        <button className='expand-shrink-button' onClick={toggleRouteOptions}>{expandRouteOptionSidebar ? (<MdArrowDropUp className='expand-shrink-button-icon' />) : (<MdArrowDropDown className='expand-shrink-button-icon' />)}</button>
-                    </div>
-                    <div className={`route-options-content ${expandRouteOptionSidebar ? 'visible' : 'hidden'}`} >
-                        <p className='route-options-subtitle-text'>Vehicle Type</p>
-                        <ul className='vehicle-type-select-menu'>
-                            <li
-                                onClick={() => handleVehicleTypeSelect('bicycle')}
-                                className={selectedVehicle === 'bicycle' ? 'selected' : ''}
-                            >
-                                <FaBicycle size={"2em"} />
-                            </li>
-                            <li
-                                onClick={() => handleVehicleTypeSelect('scooter')}
-                                className={selectedVehicle === 'scooter' ? 'selected' : ''}
-                            >
-                                <MdMoped size={"2em"} />
-                            </li>
-                            <li
-                                onClick={() => handleVehicleTypeSelect('motorcycle')}
-                                className={selectedVehicle === 'motorcycle' ? 'selected' : ''}
-                            >
-                                <FaMotorcycle size={"2em"} />
-                            </li>
-                        </ul>
-
-                        <p className='route-options-subtitle-text'>Avoid</p>
-                        <ul className='direction-options-select-menu'>
-                            <li>
-                                <div className='horizontal-checkbox-container'>
-                                    <label>Ferry</label>
-                                    <input type='checkbox' id='ferry-option'></input>
-                                </div>
-                            </li>
-                            <li>
-                                <div className='horizontal-checkbox-container'>
-                                    <label>Freeway</label>
-                                    <input type='checkbox' id='freeway-option' disabled={forceDisableFreeway}></input>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <p className='route-options-subtitle-text'>Max Speed</p>
-                        <div className='horizontal'>
-                            <label>{maxSpeed}</label>
-                            <input onChange={handleSpeedSliderChange} id='max-speed-slider' type='range' min={0} max={maxSpeedSliderCap} step={5}></input>
-                        </div>
-                    </div>
+                    <p className='route-options-subtitle-text'>Avoid</p>
+                    <ul className='direction-options-select-menu'>
+                        <li>
+                            <div className='horizontal-checkbox-container'>
+                                <label>Ferry</label>
+                                <input type='checkbox' id='ferry-option'></input>
+                            </div>
+                        </li>
+                        <li>
+                            <div className='horizontal-checkbox-container'>
+                                <label>Freeway</label>
+                                <input type='checkbox' id='freeway-option' disabled={forceDisableFreeway}></input>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
                 <div className='sidebar-subtitle-container'>

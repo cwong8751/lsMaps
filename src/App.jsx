@@ -85,7 +85,7 @@ function App() {
     // CITATION: https://www.shecodes.io/athena/9970-retrieve-user-location-with-geolocation-in-react
     if (navigator.geolocation) {
       console.log("getting geolocation");
-      
+
       const options = {
         enableHighAccuracy: false,
         timeout: 5000,
@@ -163,6 +163,11 @@ function App() {
       setMaxSpeedSliderCap(100);
       setForceDisableFreeway(false);
     }
+
+    // recompute distances
+    if (startCoordinate.length > 0 && endCoordinate.length > 0) {
+      handleDestinationSubmit();
+    }
   }
 
   const toggleRouteOptions = () => {
@@ -182,8 +187,8 @@ function App() {
     let avoidFerry = document.getElementById('ferry-option').checked;
     let avoidFreeway = document.getElementById('freeway-option').checked;
 
-    // get maxspeed
-    let maxSpeed = document.getElementById('max-speed-slider').value;
+    // // get maxspeed
+    // let maxSpeed = document.getElementById('max-speed-slider').value;
 
     // get vehicle type
     let vehicleType = selectedVehicle;

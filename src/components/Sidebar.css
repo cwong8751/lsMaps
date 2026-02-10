@@ -176,7 +176,6 @@
     transition: box-shadow 0.3s ease;
 }
 
-
 .direction-options-select-menu input[type="checkbox"]:disabled {
     cursor: not-allowed;
     background-color: gray;
@@ -345,4 +344,8 @@ input[type="checkbox"]:disabled {
     width: 100%;
     margin-left: 0px;
     padding-left: 0px;
+}
+
+.route-option-sidebar{
+    padding-bottom: 10px;
 }

@@ -16,10 +16,10 @@ body {
 }
 
 :root {
-  --background-color: #f4f4f4;
+  --background-color: #ffffff;
   --loading-screen-color: #f4f4f4ac;
-  --accent-color: blue;
-  --dark-accent-color: darkblue;
+  --accent-color: #497E76;
+  --dark-accent-color: #26423e;
   --highlight-color: #ff9800;
   --border-radius: 3px;
   --heading-font: 'Poppins', sans-serif;
