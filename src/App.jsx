@@ -166,7 +166,7 @@ function App() {
 
     // recompute distances
     if (startCoordinate.length > 0 && endCoordinate.length > 0) {
-      handleDestinationSubmit();
+      handleDestinationSubmit(null, vehicle);
     }
   }
 
@@ -178,7 +178,7 @@ function App() {
     setExpandDirectionsSidebar(!expandDirectionsSidebar);
   }
 
-  const handleDestinationSubmit = async (event) => {
+  const handleDestinationSubmit = async (event, vehicleOverride = null) => {
     if (event) {
       event.preventDefault();
     }
@@ -191,7 +191,7 @@ function App() {
     // let maxSpeed = document.getElementById('max-speed-slider').value;
 
     // get vehicle type
-    let vehicleType = selectedVehicle;
+    let vehicleType = vehicleOverride || selectedVehicle;
 
     // debug 
     console.log("start address: ", startCoordinate);

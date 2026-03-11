@@ -146,14 +146,14 @@ const Sidebar = ({
                         )}
                     </ul>
                 </div>
-                <div className='horizontal'>
+                {/* <div className='horizontal'>
                     <button className='close-button' onClick={toggleSidebar}><IoMdArrowBack /></button>
-                </div>
+                </div> */}
             </div>
 
-            {!showSidebar && (
+            {/* {!showSidebar && (
                 <button className='open-button' onClick={toggleSidebar}><IoMdArrowForward /></button>
-            )}
+            )} */}
         </>
     );
 };

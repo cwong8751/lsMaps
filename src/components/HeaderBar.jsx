@@ -7,7 +7,7 @@ const HeaderBar = ({ handlePrintClick, handleSaveClick, handleInfoClick }) => {
     return (
         <div className='header'>
             <h2>lsMaps</h2>
-            <div className="header-buttons">
+            {/* <div className="header-buttons">
                 <button onClick={handlePrintClick}>
                     <IoIosPrint />
                 </button>
@@ -17,7 +17,7 @@ const HeaderBar = ({ handlePrintClick, handleSaveClick, handleInfoClick }) => {
                 <button onClick={handleInfoClick}>
                     <IoIosInformationCircle />
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };

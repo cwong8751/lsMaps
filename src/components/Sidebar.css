@@ -1,4 +1,4 @@
-.sidebar form {
+/* .sidebar form {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
@@ -348,4 +348,322 @@ input[type="checkbox"]:disabled {
 
 .route-option-sidebar{
     padding-bottom: 10px;
+} */
+
+/* ─── Layout ─────────────────────────────────────────── */
+
+.sidebar {
+    background-color: var(--background-color);
+    width: 28em;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    padding: 5em 1.5em 1.5em;
+    gap: 1.2em;
+    overflow-y: auto;
+    font-family: var(--body-font);
+    border-right: 1px solid #e8e8e8;
+}
+
+.sidebar.visible {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: 45%;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        border-right: none;
+        border-top: 1px solid #e8e8e8;
+        padding: 1em 1.2em;
+        overflow-y: auto;
+    }
+
+    .sidebar.hidden  { transform: translateY(100%); }
+    .sidebar.visible { transform: translateY(0); }
+    .close-button    { visibility: hidden; }
+}
+
+/* ─── Form ────────────────────────────────────────────── */
+
+.sidebar form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    font-family: var(--body-font);
+}
+
+.horizontal-input-box {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    background: #f7f7f7;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 0.4em 0.7em;
+}
+
+.input-box-icon {
+    height: 1.4em;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+#get-directions-btn {
+    margin-top: 0.3em;
+    padding: 0.6em 1em;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--input-font);
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#get-directions-btn:hover {
+    background-color: var(--dark-accent-color);
+}
+
+/* ─── Vehicle Selector ────────────────────────────────── */
+
+.route-option-sidebar {
+    padding-bottom: 0.4em;
+}
+
+.vehicle-type-select-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5em;
+}
+
+.vehicle-type-select-menu li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #555;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.vehicle-type-select-menu li:hover {
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+.vehicle-type-select-menu li.selected {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* ─── Avoid Options ───────────────────────────────────── */
+
+.route-options-subtitle-text {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin: 0 0 0.5em;
+}
+
+.direction-options-select-menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.3em;
+}
+
+.direction-options-select-menu li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.45em 0.7em;
+    background: #f7f7f7;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+}
+
+.horizontal-checkbox-container label {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.direction-options-select-menu input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1.1rem;
+    width: 1.1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.direction-options-select-menu input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.direction-options-select-menu input[type="checkbox"]:hover {
+    border-color: var(--accent-color);
+}
+
+.direction-options-select-menu input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+/* ─── Directions Panel ────────────────────────────────── */
+
+.sidebar-subtitle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-title-text {
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin: 0;
+}
+
+.directions-sidebar.hidden {
+    display: none;
+}
+
+.directions-sidebar.visible {
+    display: block;
+}
+
+.horizontal {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+.directions-distance-text {
+    font-size: 0.95em;
+    color: #444;
+    margin: 0;
+}
+
+.directions-time-text {
+    font-size: 1.1em;
+    color: #888;
+    margin: 0;
+}
+
+.directions-list {
+    list-style: square;
+    list-style-position: outside;
+    margin-left: 1.2em;
+    padding: 0;
+    font-size: 0.88em;
+    color: #444;
+    line-height: 1.7;
+}
+
+.placeholder-text {
+    font-style: italic;
+    color: #aaa;
+    font-size: 0.88em;
+}
+
+/* ─── Expand / Collapse Button ────────────────────────── */
+
+.expand-shrink-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.expand-shrink-button:hover {
+    color: var(--accent-color);
+}
+
+.expand-shrink-button-icon {
+    height: 1.4em;
+    width: auto;
+}
+
+/* ─── Open / Close Buttons ────────────────────────────── */
+
+.sidebar .close-button,
+.open-button {
+    position: fixed;
+    bottom: 1.5em;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.55em 1em;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--input-font);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    z-index: 1001;
+}
+
+.sidebar .close-button { right: 1.5em; }
+.open-button           { left: 1.5em; }
+
+.sidebar .close-button:hover,
+.open-button:hover {
+    background-color: var(--dark-accent-color);
+}
+
+/* ─── Autocomplete ────────────────────────────────────── */
+
+.autocomplete-container {
+    position: relative;
+}
+
+.geocoder-container {
+    width: 100%;
 }
